@@ -1,4 +1,11 @@
 <?php
+session_start();
+ 
+// If not logged in, redirect to login
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
 include "db.php";
  
 $clients = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) AS c FROM clients"))['c'];
@@ -21,7 +28,8 @@ $revenue = $revRow['s'];
 
 <div class="container">
   <div class="page-header">
-    <h2>Dashboard</h2>
+    <h1>Dashboard</h1>
+    <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
     <p>Overview of your business at a glance</p>
   </div>
 
