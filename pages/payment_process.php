@@ -1,5 +1,5 @@
 <?php
-include "../config/db.php";
+include "../db.php";
  
 $booking_id = $_GET['booking_id'];
  
